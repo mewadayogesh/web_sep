@@ -1,1 +1,1 @@
-{"projectId":"prj_2vCELVARIvNtxVyRhVrCYEVWqhyf","orgId":"team_oJ0VTSE9kZOAhvnLV3SjxDMg","projectName":"website"}
+{"version": 2, "builds": [{"src": "app.py", "use": "@vercel/python"}], "routes": [{"src": "/static/(.*)", "dest": "/static/$1"}, {"src": "/(.*)", "dest": "app.py"}]}
