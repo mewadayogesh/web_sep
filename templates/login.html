@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D&D Department Login</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+</head>
+
+<body>
+<div class="box">
+
+<h2>D&D Department Login</h2>
+
+<form action="/login" method="POST">
+
+    <label>Username</label>
+    <input type="text"
+           name="username"
+           placeholder="Enter Username"
+           required>
+
+    <label>Password</label>
+
+    <div class="password-box">
+        <input type="password"
+               id="password"
+               name="password"
+               placeholder="Enter Password"
+               required>
+
+        <button type="button"
+                class="show-btn"
+                onclick="togglePassword()">
+            Show
+        </button>
+    </div>
+
+    {% if error %}
+    <div class="error-msg">
+         {{ error }}
+    </div>
+    {% endif %}
+
+    <button type="submit" class="login-btn">
+        Login
+    </button>
+</form>
+
+</div>
+
+<script>
+function togglePassword(){
+    let password = document.getElementById("password");
+    let button = document.querySelector(".show-btn");
+
+    if(password.type === "password"){
+        password.type = "text";
+        button.innerHTML = "Hide";
+    }
+    else{
+        password.type = "password";
+        button.innerHTML = "Show";
+    }
+}
+</script>
+
+</body>
+</html>

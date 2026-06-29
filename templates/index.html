@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Department Dashboard</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>D&D Dept</h2>
+        <ul>
+            <li><a href="/dashboards">🏠 Dashboard</a></li>
+            <li><a href="/dashboard">📝 New Entry</a></li>
+            <li><a href="/master">🔍 Master Tracker</a></li>
+            <li><a href="/records">📊 Reports</a></li>
+            
+            <li><a href="/logout">🚪 Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="form-box">
+            <h1>D&D Department Form</h1>
+
+            <form action="/save" method="POST">
+                <div class="row">
+                    <div class="field">
+                        <label>Department</label>
+                        <input type="text" name="department" required>
+                    </div>
+                    <div class="field">
+                        <label>Date</label>
+                        <input type="date" name="date" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="field">
+                        <label>Work Type</label>
+                        <select name="work" id="work" onchange="showSection()" required>
+                            <option value="">-- Select --</option>
+                            <option value="Testing">Testing</option>
+                            <option value="Repairing">Repairing</option>
+                            <option value="R&D">R&D</option>
+                            <option value="New Product">New Product</option>
+                            <option value="Mechanical Design Related">Mechanical Design Related</option>
+                        </select>
+                    </div>
+                    <div class="field">
+                        <label>Global ID</label>
+                        <input type="text" name="Global" required>
+                    </div>
+                </div>
+
+                <div class="row-single">
+                    <div class="field">
+                        <label>Task</label>
+                        <select name="task" required>
+                            <option value="">-- Select --</option>
+                            <option value="Processing">Processing</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="testingSection" class="hidden">
+                    <div class="row">
+                        <div class="field">
+                            <label>Purpose</label>
+                            <select name="purpose_testing">
+                                <option value="New Testing">New Testing</option>
+                                <option value="Repairing">Repairing</option>
+                                <option value="R&D">R&D</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Material</label>
+                            <select name="material" id="material" onchange="showMaterialInput()">
+                                <option value="Antenna">Antenna</option>
+                                <option value="DC to DC Convertor">DC to DC Convertor</option>
+                                <option value="Power Amplifier">Power Amplifier</option>
+                                <option value="RF Cable">RF Cable</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div id="otherMaterialBox" class="hidden">
+                        <div class="row-single">
+                            <div class="field">
+                                <label>Specify Material</label>
+                                <input type="text" name="other_material">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Type</label>
+                            <select name="item_type" id="item_type" onchange="showTypeInput()">
+                                <option value="A1">A1</option>
+                                <option value="B1">B1</option>
+                                <option value="C1">C1</option>
+                                <option value="D1">D1</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Frequency</label>
+                            <input type="text" name="frequency">
+                        </div>
+                    </div>
+
+                    <div id="otherTypeBox" class="hidden">
+                        <div class="row-single">
+                            <div class="field">
+                                <label>Specify Type</label>
+                                <input type="text" name="other_type">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Quantity</label>
+                            <input type="number" name="quantity" min="0">
+                        </div>
+                        <div class="field">
+                            <label>Priority</label>
+                            <select name="priority_testing">
+                                <option value="High (2-4 Days)">High (2-4 Days)</option>
+                                <option value="Medium (4-8 Days)">Medium (4-8 Days)</option>
+                                <option value="Low (10-12 Days)">Low (10-12 Days)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Item Status</label>
+                            <select name="item">
+                                <option value="In">In</option>
+                                <option value="Out">Out</option>
+                            </select>
+                        </div>
+                        <div class="field"></div>
+                    </div>
+                </div>
+
+                <div id="mechanicalSection" class="hidden">
+                    <div class="row">
+                        <div class="field">
+                            <label>Project Name</label>
+                            <input type="text" name="project">
+                        </div>
+                        <div class="field">
+                            <label>Purpose</label>
+                            <select name="purpose_mechanical">
+                                <option value="Designing">Designing</option>
+                                <option value="Measuring">Measuring</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="field">
+                            <label>Priority</label>
+                            <select name="priority_mechanical">
+                                <option value="High (2-4 Days)">High (2-4 Days)</option>
+                                <option value="Medium (4-8 Days)">Medium (4-8 Days)</option>
+                                <option value="Low (10-12 Days)">Low (10-12 Days)</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Description</label>
+                            <input type="text" name="description">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function showSection() {
+    const work = document.getElementById("work").value;
+    const testingSection = document.getElementById("testingSection");
+    const mechanicalSection = document.getElementById("mechanicalSection");
+    
+    // Target the quantity input field
+    const quantityInput = document.querySelector('input[name="quantity"]');
+
+    testingSection.classList.add("hidden");
+    mechanicalSection.classList.add("hidden");
+    
+    // Remove required validation by default so it doesn't block mechanical form submissions
+    quantityInput.removeAttribute("required");
+
+    if (
+        work === "Testing" ||
+        work === "Repairing" ||
+        work === "R&D" ||
+        work === "New Product"
+    ) {
+        testingSection.classList.remove("hidden");
+        // Make quantity strictly required when testing options are visible
+        quantityInput.setAttribute("required", "required");
+    }
+
+    if (work === "Mechanical Design Related") {
+        mechanicalSection.classList.remove("hidden");
+    }
+}
+
+function showMaterialInput() {
+    const material = document.getElementById("material").value;
+    document.getElementById("otherMaterialBox")
+        .classList.toggle("hidden", material !== "Other");
+}
+
+function showTypeInput() {
+    const type = document.getElementById("item_type").value;
+    document.getElementById("otherTypeBox")
+        .classList.toggle("hidden", type !== "Other");
+}
+</script>
+
+</body>
+</html>
