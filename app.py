@@ -5,10 +5,13 @@ from flask_sqlalchemy import SQLAlchemy
 from collections import Counter
 import json
 from functools import wraps
+import os
 
 app = Flask(__name__)
 app.secret_key = '@2005'  # Required for session
 
+#vercel
+db_path = os.path.join('/tmp', 'database.db')
 # Database Configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False                
