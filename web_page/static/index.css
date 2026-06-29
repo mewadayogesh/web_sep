@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Background */
+body {
+    background: linear-gradient(135deg, #eef2ff, #dbeafe);
+    overflow: hidden;
+}
+
+/* Wrapper */
+.wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: linear-gradient(180deg, #1e3a8a, lightgreen);
+    color: white;
+    padding-top: 20px;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.sidebar h2 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    padding: 0 10px 24px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+    border-left: 4px solid transparent;
+    font-size: 14px;
+}
+
+.sidebar ul li a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid white;
+    padding-left: 25px;
+}
+
+/* Content Area */
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    flex-grow: 1;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Form Container */
+.form-box {
+    max-width: 100%;
+    margin: auto;
+    background: lightblue;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* Heading */
+h1 {
+    margin-top: -1%;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 40px;
+    font-size: 32px;
+}
+
+/* ===== ROW LAYOUTS ===== */
+.row {
+    display: flex;
+    gap: 80px;
+    width: 80%;
+    margin: 0 auto 15px;
+}
+
+/* Force single items in a row (like Task, Other Material, Other Type) 
+   to match the exact width of a regular half-row item */
+.row-single {
+    display: flex;
+    width: 80%;
+    margin: 0 auto 15px;
+}
+.row-single .field {
+    flex: 0 1 calc(50% - 40px); /* 50% width minus half of the 80px gap */
+}
+
+.field {
+    flex: 1;
+}
+
+/* Labels */
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #374151;
+}
+
+/* Inputs */
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #f9fafb;
+    transition: 0.3s;
+}
+
+/* Focus Effect */
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.field textarea {
+    resize: vertical;
+}
+
+/* Dynamic Sections */
+#testingSection,
+#mechanicalSection {
+    border-radius: 15px;
+    margin-top: 10px;
+    padding: 20px;
+}
+
+/* Button */
+button {
+    width: 300px;
+    padding: 14px;
+    margin: 25px auto;
+    display: block;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Hidden */
+.hidden {
+    display: none !important;
+}
+
+/* Mobile Responsive */
+@media(max-width: 768px) {
+    .sidebar {
+        width: 180px;
+    }
+
+    .content {
+        margin-left: 180px;
+    }
+
+    .row, .row-single {
+        flex-direction: column;
+        width: 95%;
+    }
+    
+    .row-single .field {
+        flex: 1;
+    }
+
+    button {
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+}
+
+
+.sidebar .brand {
+    text-align:center;
+    font-size:22px;
+    font-weight:700;
+    color:white;
+    padding:0 10px 24px;
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    margin-bottom:10px;
+}
