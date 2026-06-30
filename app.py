@@ -291,7 +291,7 @@ def edit(id):
 .btn-submit{display:block;width:240px;margin:20px auto 0;padding:14px 25px;background:linear-gradient(135deg,#0284c7,#0369a1);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:600;letter-spacing:.5px;cursor:pointer;box-shadow:0 6px 15px rgba(2,132,199,.35);transition:all .3s ease;}
 /*.btn-submit:hover{background:linear-gradient(135deg,#0369a1,#075985);    transform:translateY(-3px);box-shadow:0 10px 20px rgba(2,132,199,.45);}*/
 
-.btn-submit:hover{background:lightgrey;    transform:translateY(-3px);box-shadow:0 10px 20px rgba(2,132,199,.45);}
+.btn-submit:hover{background:#4f46e5;    transform:translateY(-3px);box-shadow:0 10px 20px rgba(2,132,199,.45);}
 .btn-submit:active{transform:scale(.97);}
 
 /* Cancel Button */
